@@ -13,31 +13,27 @@
 %% explanation what a binding correction is and how to measure it.
 \newcommand{\myBCOR}{0mm}
 
-%% Either you are creating a document which is printed on both, left pages
-%% and right pages (twoside) or you create a document which is printed
-%% on right pages only (oneside).
-%% e.g. "oneside" or "twoside"
-\newcommand{\mylaterality}{oneside}
+%% Either you are creating a document which is printed on both, left pages and right pages (twoside) or you create a document which is printed on right pages only (oneside).
+%% e.g. "true" or "false"
+\newcommand{\mytwoside}{false}
 
 %% Color of the headings and so forth in RGB (red,green,blue) values.
 %% e.g. "30,103,182" (blue/turquois), "0,0,0" (black), ...
-\newcommand{\mydispositioncolor}{22,72,154}
+\newcommand{\mydispositioncolor}{0,0,0}%{22,72,154}
 
-%% Line spacing in %/100. For example 1.5 means 150% of the usual line
-%% spacing. Please use with caution: 100% ("1.0") is fine because the
-%% font was designed for it.
+%% Line spacing in %/100. For example 1.5 means 150% of the usual line spacing. Please use with caution: 100% ("1.0") is fine because the font was designed for it.
 %% e.g. 1.0, 1.5, 2.0
 \newcommand{\mylinespread}{1.5}
 
-\newcommand{\mycolorlinks}{true}  %% "true" or "false"
+\newcommand{\mycolorlinks}{false}  %% "true" or "false"
 %% Enables or disables colored links (hyperref package).
-% turn on/off colored links (on: better for
-                          % on-screen reading; off: better for printout versions)
+% turn on/off colored links (on: better for on-screen reading; 
+                            %off: better for printout versions)
 
 %% See babel documentation for further details.
 %% NOTE: The *last* language is the active one!
 %% "english,ngerman", "ngerman,english", ...
-\newcommand{\mylanguage}{american,ngerman}
+\newcommand{\mylanguage}{english,ngerman}
 
 %% ========================================================================
 %%%% Document metadata
@@ -58,8 +54,8 @@
 \newcommand{\mysubject}{T3\_1000 von Max Mustermann}
 \newcommand{\mykeywords}{Key, Word}
 
-%% nur bei Bachelorarbeit wichtig: Art des Abschlusses:
-\newcommand{\mydegree}{Bachelor of Science}
+%% nur bei Thesis wichtig: Art des Abschlusses:
+\newcommand{\mydegree}{Master of Science}
 
 %% Dualer Partner
 \newcommand{\mydualpartner}{Ein Unternehmen AG}
@@ -70,15 +66,15 @@
 \newcommand{\myuniversity}{Duale Hochschule Muster}
 \newcommand{\mycourse}{MUS-INFORMATIK}
 \newcommand{\mystudy}{Informatik}
-\newcommand{\myevaluator}{Prof. Dr. Dr. Müller}
+\newcommand{\myevaluator}{Prof. Dr. Müller}
 
 %% Datum
-\newcommand{\mysubmissionday}{1}
-\newcommand{\mysubmissionmonth}{April}
-\newcommand{\mysubmissionyear}{2020}
+\newcommand{\mysubmissionday}{31}
+\newcommand{\mysubmissionmonth}{März}
+\newcommand{\mysubmissionyear}{2025}
 
-\newcommand{\myprocessingperiodbegin}{01.01.2020}
-\newcommand{\myprocessingperiodend}{01.04.2020}
+\newcommand{\myprocessingperiodbegin}{01.01.2025}
+\newcommand{\myprocessingperiodend}{31.03.2025}
 
 %% ========================================================================
 %%%% Other settings
@@ -96,19 +92,22 @@
 %%%% begin{document}
 %% ========================================================================
 \begin{document}
-\sffamily
+\rmfamily
 \frontmatter
+%% Big roman page numbering
+\pagenumbering{Roman}
 
 %% Titelseite
-%% Layout mit Firmen und DHBW Angaben
-\input{template/title}
+%% Verwendung von Studienarbeit-Deckblatt
+\input{template/dhbw_coverpage_study}
 %% Verwendung von Projekt-Deckblatt
-%% \input{template/dhbw_coverpage_projectreport}
-%% Verwendung von Projekt-Deckblatt
-%% \input{template/dhbw_coverpage_bachelor}
+% \input{template/dhbw_coverpage_projectreport}
+%% Verwendung von Bachelor-Deckblatt
+% \input{template/dhbw_coverpage_thesis}
 
 %% Sperrvermerk
 \input{template/confidentiality_clause}
+
 %% Eidesstattliche Erklärung
 \input{template/declaration_affidavit}
 
@@ -116,7 +115,10 @@
 \include{chapters/chap0_abstract}
 
 %% Inhaltsverzeichnis
+%% Rename table of contents (optional)
+% \renewcommand{\contentsname}{Table of Contents}
 \tableofcontents
+\newpage
 
 %% Abkürzungen
 \input{etc/acronyms}
@@ -138,7 +140,7 @@
 \fi
 
 %% Code-Verzeichnis anzeigen, wenn Code-Blöcke in Dokument enthalten sind
-\renewcommand\lstlistlistingname{Code-Verzeichnis}
+\renewcommand\lstlistlistingname{Listingverzeichnis}
 \iftotallstlistings
     \cleardoublepage
     \phantomsection
@@ -146,16 +148,27 @@
     \lstlistoflistings
 \fi
 
-%% Marks main part using arabic page numbers and such; Only available in scrbook
+%% Gender Disclaimer
+\input{template/gender_disclaimer.tex}
+
+%% Marks main part using Arabic page numbers and such; Only available in scrbook
 \mainmatter
+\pagenumbering{arabic}
 
 %% Add new chapters here
 \input{chapters/chap1_introduction}
 \input{chapters/chap2_examples}
 
-\input{chapters/chapZ_appendix}
+\backmatter
+%% Big Roman page numbering
+\pagenumbering{Roman}
+\setcounter{page}{12}
 
 %% Literaturverzeichnis
-\printbibliography
+\printbibliography[notkeyword=online]
+\printbibliography[keyword=online, heading=subbibliography, title={Online-Quellen}]
+
+%% Appendix
+\input{chapters/chapZ_appendix}
 
 \end{document}

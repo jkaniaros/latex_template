@@ -1,8 +1,7 @@
 %% ========================================================================
 %%%% Information
 %% ========================================================================
-%% Titelseite für Arbeiten mit der dualen Hochschule Mosbach und dem
-%% Unternehmen WIKA.
+%% Titelseite für Abschlussarbeiten and der DHBW mit einem Unternehmen.
 %% Die anzuzeigenden Daten werden in der Datei main.tex festgelegt.
 
 \begin{titlepage}
@@ -12,7 +11,7 @@
     \AtPageUpperLeft{
         \hspace{\paperwidth}
         \raisebox{-50mm}{
-            \makebox[-129mm][r]{\includegraphics[width=42mm]{template/figures/Company_Logo}}
+            \makebox[-129mm][r]{\includegraphics[width=42mm]{template/figures/Company_Logo.png}}
         }
     }
 }
@@ -22,7 +21,7 @@
     \AtPageUpperLeft{
         \hspace{\paperwidth}
         \raisebox{-52mm}{
-            \makebox[-39mm][r]{\includegraphics[width=42mm]{template/figures/University_Logo}}
+            \makebox[-39mm][r]{\includegraphics[width=42mm]{template/figures/DHBW.png}}
         }
     }
 }
@@ -38,15 +37,19 @@
 {\large\bfseries\mysubtitle}
 
 \vfill\vfill
-{\normalsize\bfseries\myworktype~\myworktitle}\\
+{\normalsize\bfseries\ \uppercase{\myworktitle}}\\
+
+\vfill\vfill
+for the degree \\
+\mydegree
 
 \vfill \vfill
-Im Studiengang \mystudy ~an der\\
-{\normalsize\bfseries\myuniversity}
+at the \mystudy ~Department at the\\
+\myuniversity
 
 \vfill
-von\\
-\myauthor
+by\\
+\textbf{\myauthor}
 
 \vfill
 \mysubmissionday. \mysubmissionmonth~\mysubmissionyear
@@ -56,13 +59,11 @@ von\\
 
 \sffamily{
 \begin{tabular}{ll}
-    Bearbeitungszeitraum & \myprocessingperiodbegin ~- \myprocessingperiodend \\
-    Matrikelnummer & \myid \\
-    Kurs & \mycourse \\
-    Ausbildungsfirma & \mydualpartner \\
-    & \mydualpartnerLocation \\
-    Betreuer der Ausbildungsfirma & \mysupervisor \\
-    Gutachter der Dualen Hochschule & \myevaluator \\
+    Processing period & 12 Wochen \\
+    Student ID, Course & \myid, \mycourse \\
+    Company & \mydualpartner, \mydualpartnerLocation \\
+    Supervisor & \mysupervisor \\
+    Evaluator & \myevaluator
 \end{tabular}
 }
 
