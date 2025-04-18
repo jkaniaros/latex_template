@@ -1,9 +1,11 @@
 %!TEX root = ../main.tex
 
 %% Neuen Befehl für Textfelder definieren
-\newcommand{\textfield}[2]{
+\newcommand{\textfield}[3]{
     \vbox{
-        \hsize=#1\kern3cm\hrule\kern1ex
+        \hsize=#1\kern3cm
+        {\strut\hfil\hfil\hfil\hfil#3\hfil}
+        \hrule\kern1ex
         \hbox to \hsize{\strut\hfil\footnotesize#2\hfil}
     }
 }
@@ -13,6 +15,6 @@
 I hereby declare that I have written my study on the topic \enquote{\emph{\mytitle}} independently and that I have not used any sources or aids
 other than the indicated ones. I also declare that the submitted electronic version matches the printed version. \\
 %% Ort, Datum und Unterschrift
-\hbox to \hsize{\textfield{7cm}{Place, Date}\hfil\hfil\textfield{5cm}{Signature}}
+\hbox to \hsize{\textfield{7cm}{Place, Date}{MyPlace, \today}\hfil\hfil\textfield{5cm}{Signature}{}}
 
 \newpage

@@ -1,9 +1,11 @@
 %!TEX root = ../main.tex
 
 %% Neuen Befehl für Textfelder definieren
-\newcommand{\textfield}[2]{
+\newcommand{\textfield}[3]{
     \vbox{
-        \hsize=#1\kern3cm\hrule\kern1ex
+        \hsize=#1\kern3cm
+        {\strut\hfil\hfil\hfil\hfil#3\hfil}
+        \hrule\kern1ex
         \hbox to \hsize{\strut\hfil\footnotesize#2\hfil}
     }
 }
@@ -14,7 +16,7 @@ Ich versichere hiermit, dass ich meine \myworktype ~mit dem Thema: \enquote{\emp
 
 Ich versichere zudem, dass die eingereichte elektronische Fassung mit der gedruckten Fassung übereinstimmt.\\
 %% Ort, Datum und Unterschrift
-\hbox to \hsize{\textfield{6cm}{Ort, Datum}\hfil\hfil\textfield{6cm}{Unterschrift}}
+\hbox to \hsize{\textfield{6cm}{Ort, Datum}{MeinOrt, \today}\hfil\hfil\textfield{6cm}{Unterschrift}{}}
 
 
 \newpage
