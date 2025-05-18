@@ -59,7 +59,13 @@
 
 %% Use biblatex for bibliography
 %% With "Sorting=None" the numbering is done according to the order of appearance. 
-\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\usepackage[bibstyle=ieee,
+	    citestyle=numeric,
+            style=numeric,
+	    sorting=none,
+	    bibencoding=utf8,
+	    backend=biber
+]{biblatex}
 
 %% Used for quotes
 \usepackage{csquotes}
